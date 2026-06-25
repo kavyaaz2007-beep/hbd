@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Twin ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;overflow:hidden;font-family:'Space Grotesk',sans-serif;background:linear-gradient(135deg,#141414,#373040);height:100vh;display:grid;place-items:center;color:#fff}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle,#ffffff33 1px,transparent 1px);background-size:28px 28px;opacity:.2}
+.card{width:min(92vw,500px);background:rgba(24,24,24,.65);backdrop-filter:blur(14px);padding:34px;border-radius:28px;border:1px solid #ffffff22;box-shadow:0 25px 60px #0007;position:relative}
+.tape{position:absolute;top:-12px;right:24px;background:#ffd5e6;color:#111;padding:6px 14px;border-radius:4px;transform:rotate(8deg)}
+h1,h2{font-family:'Cormorant Garamond',serif}
+.btn{border:none;border-radius:999px;padding:12px 24px;margin:10px;cursor:pointer;font-family:inherit;font-weight:600}
+.y{background:#ffc9df}
+.n{background:#fff;position:absolute}
+.wrap{position:relative;height:100px}
+.progress{height:10px;background:#fff2;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:#ffc9df;transition:.2s}
+.line{opacity:0;transition:.4s}
+</style>
+</head>
+<body>
+
+<audio id="bg" loop>
+<source src="The Neighbourhood - Pretty Boy (Official Lyric Video) - (64 Kbps).mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+<div class="tape">19 TODAY!!</div>
+<h1>happy birthday twin ✦</h1>
+<p>before claiming your birthday gift, complete the official birthday verification.</p>
+<button class="btn y" onclick="document.getElementById('bg').play();q(0)">begin ↗</button>
+</div>
+
+<script>
+const bouquet="https://digibouquet.vercel.app/bouquet/47c9d91e-281c-49aa-88e7-53109200707b";
+const qs=[
+["are you officially an unc now?","yes, unfortunately 😔"],
+["should aswath stay at least 6 feet away from you today?","absolutely."],
+["do you deserve the best birthday ever?","obviously."]
+];
+function q(i){
+card.innerHTML=`<h2>question ${i+1}</h2><p>${qs[i][0]}</p><div class='wrap'><button class='btn y' onclick='${i==2?"load()":"q("+(i+1)+")"}'>${qs[i][1]}</button><button class='btn n' id='n'>no</button></div>`;
+const n=document.getElementById('n');
+n.style.left='220px';
+['mouseover','click'].forEach(e=>n.addEventListener(e,()=>{n.style.position='fixed';n.style.left=Math.random()*(innerWidth-90)+'px';n.style.top=Math.random()*(innerHeight-60)+'px';}));
+}
+function load(){
+card.innerHTML=`<h2>loading...</h2><div class='progress'><div class='bar' id='b'></div></div>
+<p class='line' id='l1'>checking age... ✓</p>
+<p class='line' id='l2'>checking unc status... ✓</p>
+<p class='line' id='l3'>checking aswath distance... ✓</p>
+<p class='line' id='l4'>unlocking birthday gift... ✓</p>`;
+let w=0;let t=setInterval(()=>{w+=5;b.style.width=w+'%';if(w>=25)l1.style.opacity=1;if(w>=50)l2.style.opacity=1;if(w>=75)l3.style.opacity=1;if(w>=100){l4.style.opacity=1;clearInterval(t);setTimeout(done,700);}},70);
+}
+function done(){
+card.innerHTML=`<div class='tape'>verified ✓</div><h1>happy birthday, twin ♡</h1><p>your birthday gift has officially been unlocked.</p><button class='btn y' onclick="location.href='${bouquet}'">claim gift 🎁</button><p>have the best day. don't let aswath within 6 feet.</p>`;
+}
+</script>
+</body>
+</html>
